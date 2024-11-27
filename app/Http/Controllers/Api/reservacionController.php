@@ -32,7 +32,7 @@ class reservacionController extends Controller
             "fecha_reservacion" => "required|date",
             "id_cliente" => "required|integer",
             "hora_inicio" => "required|date_format:H:i:s",
-            "hora_final" => "required|date_format:H:i:s",
+            "hora_final" => "required|date_format:H:i:s|after:hora_inicio",
             "numero_mesa" => "required|integer"
         ]);
 
