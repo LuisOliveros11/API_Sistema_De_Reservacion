@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\mesaController;
 use App\Http\Controllers\Api\reservacionController;
 use App\Http\Controllers\Api\clienteController;
+use App\Http\Controllers\Api\usuarioController;
 
 #CRUD MESAS
 Route::get("/mesas", [mesaController::class, 'index']);
@@ -40,4 +41,16 @@ Route::post("/clientes", [clienteController::class,"store"]);
 Route::put("/clientes/{id}", [clienteController::class,"update"]);
 
 Route::delete("/clientes/{id}", [clienteController::class,"destroy"]);
+
+#CRUD USUARIOS
+
+Route::get("/usuarios", [usuarioController::class, 'index']);
+
+Route::get("/usuarios/{id}", [usuarioController::class,"show"]);
+
+Route::post("/usuarios", [usuarioController::class,"store"]);
+
+Route::put("/usuarios/{id}", [usuarioController::class,"update"]);
+
+Route::delete("/usuarios/{id}", [usuarioController::class,"destroy"]);
 
