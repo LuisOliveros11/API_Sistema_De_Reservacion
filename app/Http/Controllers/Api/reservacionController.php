@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Reservacion;
+use App\Models\Cliente;
+use App\Models\Mesa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -43,6 +45,24 @@ class reservacionController extends Controller
                 "status"=> 400
             ];
             return response()->json( $data, 400);
+        }
+
+        $id_cliente = Cliente::find($request->id_cliente);
+        if(!$id_cliente){
+            $data = [
+                "message"=> "Error al encontrar el ID del cliente",
+                "status"=> 404
+            ];
+            return response()->json( $data, 404);
+        }
+
+        $num_mesa = Mesa::where("numero", $request->numero_mesa)->first();
+        if(!$num_mesa){
+            $data = [
+                "message"=> "Error al encontrar el numero de la mesa",
+                "status"=> 404
+            ];
+            return response()->json( $data, 404);
         }
         
         $reservacion = Reservacion::create([
@@ -128,6 +148,24 @@ class reservacionController extends Controller
                 "status"=> 400
             ];
             return response()->json( $data, 400);
+        }
+
+        $id_cliente = Cliente::find($request->id_cliente);
+        if(!$id_cliente){
+            $data = [
+                "message"=> "Error al encontrar el ID del cliente",
+                "status"=> 404
+            ];
+            return response()->json( $data, 404);
+        }
+
+        $num_mesa = Mesa::where("numero", $request->numero_mesa)->first();
+        if(!$num_mesa){
+            $data = [
+                "message"=> "Error al encontrar el numero de la mesa",
+                "status"=> 404
+            ];
+            return response()->json( $data, 404);
         }
 
         $reservacion->fecha_reservacion = $request->fecha_reservacion;
